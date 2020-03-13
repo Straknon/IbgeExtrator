@@ -3,18 +3,27 @@
 ### Informações gerais
 
 Language: Java - 1.8 jdk </br>
-Platform: JavaFX - 0.0.3 openfx
+Repository: Maven
 
-### Informações de uso
+### Guia
 
-Ao abrir o programa, localizado na pasta *"exeSample"*, aparecerá 3 botões e 2 campos.
-- O botão *"GO"* é utilizado para a pesquisa do campo da *url*.
--  O botão *"ONE"* é utilizado para a transformação da tabela da página atual em excel.
--  O botão *"ALL"* é utilizado para a transformação de todas as tabelas do "sigct" em uma tabela excel, funciona somente na página de demandas e pega somente os dados das "ufs" mapeadas no código, pela falta de uma *"API"* do sigct, o programa foi feito simulando os passos de uma pessoa, funciona como um *"bot"*, demorará alguns minutos para terminar de executar.
-- O campo maior é destinado para busca de *url*.
-- O campo menor, é o tempo em segundos de intervalo entre cada iteração do botão *"ALL"*, ao apertar o botão, ele somente pegará a próxima operação após esse tempo, aconselhado deixar entre 4 e 6 segundos.
+Configurar o banco de dados com as variaveis: D2C,D2N,D3C,D3N,D4C,D4N,MC,MN,V em formato varchar, caso queira mudar o tipo de dado, terá que mudar no java também.
+Importe o projeto no Eclipse.
+Mudar as configurações da classe DAO, de acordo com o seu banco, caso não seja Sql Server, lembre-se de importar no maven o driver do seu banco de dados.
 
+Executar no eclipse
+-
 
-**Importante: O  arquivo será gerado na mesma pasta do ".exe" e substituira caso tenha um arquivo com o mesmo nome e extensão, aconselhável apertar o botão *"ALL"* somente uma vez, ele fará o trabalho todo sozinho, é aconselhável olhar o log e a página para ver se está ocorrendo tudo corretamente, espere a mensagem de log *"FINISH"* para fechar o programa.
-Observações: Se o botão *"ALL"* for pressionado mais de uma vez, ele fará o processo quantas vezes for pressionado, o excel só começa a ser gerado após ter pego todas as tabelas, aparecerá uma mensagem no log.**
+Em Extrator clique com o botão direito na página e `Run as/ Java Application`, lembre-se de ter instalado e configurado o jdk1.8
 
+Build
+-
+
+No projeto no menu lateral clique com o botão direito e vá em `Run as/Maven Build...` aparecerá para mudar as configurações de execução, em "GOALS" coloque "package" e pode rodar, caso de algum problema na build, tente "clean package", lembre-se de que necessita estar configurado para usar o jdk1.8 no eclipse.
+
+A build fica na pasta target, para executar, abra o cmd na pasta da build e execute o comando com java -jar nomeArquivo.jar (use o com dependencias), lembre-se de ter o java configurado nas variaveis de ambiente do windows (colocar o diretorio do bin do jdk 1.8 em "Path").
+
+Configurando jdk1.8 eclipse
+-
+
+Após ter baixado e instalado o jdk, vá no eclipse botão direito no projeto `Build path/Configure build path ` clique em "JRE System Library" e clique em "Edit", selecione `Alternate JRE/Installed JREs/Add` coloque o diretorio da pasta jdk. Ainda nas propriedades do projeto, "Properties", verifique o "Java Compiler" se está para jdk 1.8.
