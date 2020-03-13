@@ -81,7 +81,10 @@ public class Extractor {
 		
 		
 		for (ValoresDescritosPorSuasDimensoes valoresDescritosPorSuasDimensoes : listaObj) {// realiza outra iteração (loop), porém da nova lista criada e insere no banco de dados
-			valDao.inserir(valoresDescritosPorSuasDimensoes);
+			if(valoresDescritosPorSuasDimensoes.getD3N().contains("2017")||valoresDescritosPorSuasDimensoes.getD3N().contains("2018")||valoresDescritosPorSuasDimensoes.getD3N().contains("2019")) {
+				valDao.inserir(valoresDescritosPorSuasDimensoes);	
+			}
+			
 		}
 		System.out.println("Finish");//log de fim
 	}
