@@ -19,7 +19,7 @@ import br.first.tte.exception.Validator;
 public class Extractor {
 	
 	public static void main(String[] args) {
-		startButton("http://api.sidra.ibge.gov.br/values/t/3653/n1/all/v/all/p/all/h/n");// Passa a URL como parametro
+		startButton("http://api.sidra.ibge.gov.br/values/t/3653/n1/all/v/all/p/201701-201912/h/n");// Passa a URL como parametro
 	}
 	
 	/**Metodo Principal para ser chamado e começar todo o processo, recebe a URL da api como parametro*/
@@ -81,54 +81,10 @@ public class Extractor {
 		
 		
 		for (ValoresDescritosPorSuasDimensoes valoresDescritosPorSuasDimensoes : listaObj) {// realiza outra iteração (loop), porém da nova lista criada e insere no banco de dados
-			if(valoresDescritosPorSuasDimensoes.getD3N().contains("2017")||valoresDescritosPorSuasDimensoes.getD3N().contains("2018")||valoresDescritosPorSuasDimensoes.getD3N().contains("2019")) {
 				valDao.inserir(valoresDescritosPorSuasDimensoes);	
-			}
-			
 		}
 		System.out.println("Finish");//log de fim
 	}
 	
 	
-	
-	/*
-	public static void StringToArray(String source) {
-	    List<ArrayList<String>> colunas = new ArrayList<ArrayList<String>>();
-	    Document doc = Jsoup.parse(source);
-	    System.out.println(doc.toString());
-	    for (Element table : doc.select("ArrayOfValorDescritoPorSuasDimensoes")) {
-	        for (Element row : table.select("ValorDescritoPorSuasDimensoes")) {
-	        	if(!row.select("ValorDescritoPorSuasDimensoes").hasText()) {
-		    		continue;
-		    	}
-	        	ArrayList<String> linhas = new ArrayList<String>();	        	
-	        	linhas.add(row.select("D2C").get(0).text());
-	        	linhas.add(row.select("D2N").get(0).text());
-	        	linhas.add(row.select("D3C").get(0).text());
-	        	linhas.add(row.select("D3N").get(0).text());
-	        	linhas.add(row.select("D4C").get(0).text());
-	        	linhas.add(row.select("D4N").get(0).text());	        	
-	        	linhas.add(row.select("D5C").attr("i:nil"));
-	        	linhas.add(row.select("D5N").attr("i:nil"));
-	        	linhas.add(row.select("D6C").attr("i:nil"));
-	        	linhas.add(row.select("D6N").attr("i:nil"));
-	        	linhas.add(row.select("D7C").attr("i:nil"));
-	        	linhas.add(row.select("D7N").attr("i:nil"));
-	        	linhas.add(row.select("D8C").attr("i:nil"));
-	        	linhas.add(row.select("D8N").attr("i:nil"));
-	        	linhas.add(row.select("D9C").attr("i:nil"));
-	        	linhas.add(row.select("D9N").attr("i:nil"));
-	        	linhas.add(row.select("MC").get(0).text());
-	        	linhas.add(row.select("MN").get(0).text());
-	        	linhas.add(row.select("V").get(0).text());
-	        	
-	        	for (String str : linhas) {
-					System.out.println("LOG\t"+str);
-				}
-	        	
-	        	colunas.add(linhas);
-	         }
-	    }
-	}*/
-
 }
